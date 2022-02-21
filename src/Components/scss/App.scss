@@ -1,0 +1,32 @@
+@import "./config";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css");
+@import "@fontsource/ubuntu";
+
+.app {
+  min-height: 100vh;
+  max-height: max-content;
+  background: linear-gradient($bg-gradient);
+  color: map-get($font-color, white-c);
+  font-family: "ubuntu", sans-serif;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}

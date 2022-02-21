@@ -1,0 +1,38 @@
+$color: (
+  "sky-blue": #3ea2e5,
+  "light-blue": #8bc5e3,
+);
+
+$font-color: (
+  "white-c": #fff,
+);
+
+$font-weight: (
+  "medium": 500,
+  "bold": 600,
+  "bolder": 700,
+  "boldest": 800,
+);
+
+$font-size: (
+  "smallest": 0.8rem,
+  "small": 0.9rem,
+  "normal": 1rem,
+  "large": 1.1rem,
+  "larger": 1.2rem,
+  "largest": 1.5rem,
+  "huge": 2rem,
+  "massive": 2.5rem,
+);
+
+$bg-gradient: map-get($color, sky-blue), map-get($color, light-blue);
+
+@mixin flex($justify, $align) {
+  @if ($justify != null) {
+    justify-content: $justify;
+  }
+
+  @if ($align != null) {
+    align-items: $align;
+  }
+}
