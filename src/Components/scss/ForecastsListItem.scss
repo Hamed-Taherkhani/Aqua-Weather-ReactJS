@@ -1,0 +1,27 @@
+@import "./config";
+
+.forecasts-list-item {
+  @include flex(space-between, null);
+  padding: 0.5rem 1rem;
+
+  .left {
+    .condition-icon {
+      margin-right: 5px;
+    }
+  }
+
+  .right {
+    sup {
+      vertical-align: super;
+      font-size: map-get($font-size, tiny);
+    }
+
+    .max-temp {
+      margin-right: 2px;
+    }
+
+    .min-temp {
+      margin-left: 2px;
+    }
+  }
+}

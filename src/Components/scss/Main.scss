@@ -1,0 +1,71 @@
+@import "./config";
+
+.app-main {
+  .temp {
+    text-align: center;
+    margin-top: 70px;
+    opacity: 0.8;
+
+    sup {
+      vertical-align: super;
+    }
+
+    .amount {
+      font-size: map-get($font-size, massive) * 2.5;
+      font-weight: map-get($font-weight, regular);
+    }
+
+    .unit {
+      position: relative;
+      bottom: 4rem;
+      right: 10px;
+      font-size: map-get($font-size, large);
+    }
+
+    .symbol {
+      position: relative;
+      left: 2px;
+      font-size: map-get($font-size, tiny);
+    }
+  }
+
+  .weather-condition {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .aqi {
+    @include flex(center, center);
+    margin: 5px 0 80px 0;
+    font-size: map-get($font-size, smallest);
+
+    & > div {
+      background-color: #72727242;
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+
+      .icon {
+        display: inline-block;
+        width: 12px;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .more-forecasts {
+    text-align: center;
+    margin: 20px 1rem 0 1rem;
+
+    .more-btn {
+      color: map-get($font-color, white-c);
+      padding: 10px 30px;
+      width: 100%;
+      background-color: #2424243f;
+      border-radius: 30px;
+    }
+  }
+}
