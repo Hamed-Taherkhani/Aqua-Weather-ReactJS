@@ -12,8 +12,8 @@ function Main() {
         <h2>Get current and forecast weather, everywhere and every time</h2>
       </div>
 
-      <div className="temp ">
-        <strong className="amount ">21</strong>
+      <div className="temp">
+        <strong className="amount">21</strong>
         <sup className="unit">
           C<sup className="symbol">o</sup>
         </sup>
