@@ -18,4 +18,4 @@ async function getCurrentWeatherData(cityName) {
   }
 }
 
-export default getCurrentWeather;
+export default getCurrentWeatherData;

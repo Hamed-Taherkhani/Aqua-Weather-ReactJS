@@ -2,7 +2,9 @@ import React from "react";
 import "./scss/Main.scss";
 import DaysForecastsList from "./DaysForecastsList";
 
-function Main() {
+function Main(props) {
+  const { weather } = props;
+
   return (
     <main className="app-main">
       <div className="app-info" hidden>
@@ -12,14 +14,18 @@ function Main() {
         <h2>Get current and forecast weather, everywhere and every time</h2>
       </div>
 
-      <div className="temp">
-        <strong className="amount">21</strong>
+      <div className="temp ">
+        <strong className="amount ">
+          {weather.main != null ? Math.round(weather.main.temp) : null}
+        </strong>
         <sup className="unit">
           C<sup className="symbol">o</sup>
         </sup>
       </div>
 
-      <div className="weather-condition">Clear</div>
+      <div className="weather-condition">
+        {weather.weather != undefined ? weather.weather[0].description : null}
+      </div>
 
       <div className="aqi flex-row">
         <div>

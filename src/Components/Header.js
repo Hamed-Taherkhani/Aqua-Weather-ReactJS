@@ -1,7 +1,9 @@
 import React from "react";
 import "./scss/Header.scss";
 
-function Header() {
+function Header(props) {
+  const { location } = props;
+
   return (
     <header className="app-header">
       <ul className="header-items-list flex-row">
@@ -13,7 +15,9 @@ function Header() {
             />
           </button>
         </li>
-        <li className="header-item">City Name</li>
+        <li className="header-item">
+          {location.name != undefined ? location.name : null}
+        </li>
         <li className="header-item">
           <button id="more" className="icon">
             <img
