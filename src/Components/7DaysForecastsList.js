@@ -2,6 +2,7 @@ import React from "react";
 import SevenDaysForecastsListItem from "./7DaysForecastsListItem";
 import "./scss/SevenDaysForecastsList.scss";
 import date from "../Date/date";
+import TempChart from "./TempChart";
 
 function SevenDaysForecastsList(props) {
   const { weather } = props;
@@ -9,8 +10,7 @@ function SevenDaysForecastsList(props) {
   if (weather.daily != undefined) dailyWeatherArr = weather.daily;
 
   const today = new Date();
-  const todayIndex = today.getDay() - 1,
-    dateIndex = today.getDate();
+  const todayIndex = today.getDay() - 1;
 
   return (
     <div className="seven-days-forecast-list">
@@ -38,6 +38,16 @@ function SevenDaysForecastsList(props) {
               />
             ))}
           </ul>
+
+          <TempChart
+            deg={{ place: "top" }}
+            temps={dailyWeatherArr.map((item) => item.temp.max)}
+          />
+
+          <TempChart
+            deg={{ place: "down" }}
+            temps={dailyWeatherArr.map((item) => item.temp.min)}
+          />
 
           <ul className="list flex-row">
             {dailyWeatherArr.map((item, index) => (

@@ -1,0 +1,36 @@
+@import "./config";
+
+.chart {
+  &:first-child {
+    background-color: red;
+  }
+
+  .chart-pixel {
+    width: 65px;
+    text-align: center;
+
+    &:first-child {
+      margin-left: -24px;
+    }
+
+    .point {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .shape {
+        display: inline-block;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 2px solid #fff;
+      }
+
+      .temp {
+        font-size: map-get($font-size, tiny);
+      }
+    }
+  }
+}
