@@ -1,6 +1,6 @@
 import React from "react";
 import "./scss/Main.scss";
-import DaysForecastsList from "./DaysForecastsList";
+import DaysForecastsList from "./3DaysForecastsList";
 import MoreWeatherInfos from "./MoreWeatherInfos";
 
 function Main(props) {
@@ -41,7 +41,7 @@ function Main(props) {
         </div>
       </div>
 
-      <DaysForecastsList />
+      <DaysForecastsList weather={weather} />
 
       <div className="more-forecasts">
         <button className="more-btn">5-days forecasts</button>
