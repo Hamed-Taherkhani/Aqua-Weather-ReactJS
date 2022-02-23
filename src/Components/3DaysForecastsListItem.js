@@ -1,5 +1,5 @@
 import React from "react";
-import "./scss/ForecastsListItem.scss";
+import "./scss/3DaysForecastsListItem.scss";
 
 function ForecastsListItem(props) {
   const { day, condition, temp } = props;

@@ -1,5 +1,5 @@
 import React from "react";
-import ForecastsListItem from "./ForecastsListItem";
+import ForecastsListItem from "./3DaysForecastsListItem";
 import date from "../Date/date";
 
 function DaysForecastsList(props) {
