@@ -4,7 +4,7 @@ import date from "../Date/date";
 
 function DaysForecastsList(props) {
   const { weather } = props;
-  const todayIndex = new Date().getDay();
+  const todayIndex = new Date().getDay() - 1;
 
   return (
     <ul className="days-forecast-list">

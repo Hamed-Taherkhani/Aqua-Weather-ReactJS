@@ -1,0 +1,45 @@
+@import "./config";
+
+.seven-days-forecast-list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1f1f1f;
+  @include flex(center, center);
+
+  header {
+    padding: 1rem;
+
+    .back-btn {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .page-name {
+      font-size: map-get($font-size, larger);
+      font-weight: map-get($font-weight, regular);
+    }
+  }
+
+  main {
+    width: 100%;
+
+    .container {
+      width: 100%;
+      overflow: auto hidden;
+      margin: 0 1rem;
+
+      .list {
+        min-width: max-content;
+        margin: 30px 1rem 0 1rem;
+        padding: 1rem 0;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

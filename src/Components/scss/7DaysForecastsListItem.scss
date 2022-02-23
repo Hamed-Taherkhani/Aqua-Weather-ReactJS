@@ -1,0 +1,37 @@
+@import "./config";
+
+.list-item {
+  width: 65px;
+  @include flex(null, center);
+
+  &:first-child {
+    margin-left: -24px;
+  }
+
+  .date {
+    margin-bottom: 10px;
+
+    .day-of-week {
+      font-size: map-get($font-size, smallest);
+      margin-bottom: 3px;
+    }
+
+    .date-of-day {
+      text-align: center;
+      font-size: map-get($font-size, tiny);
+    }
+  }
+
+  .wind {
+    margin-top: 10px;
+
+    .speed {
+      font-size: map-get($font-size, tiny);
+
+      span {
+        font-size: 0.6rem;
+        margin-left: 1px;
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import "./scss/Main.scss";
 import ThreeDaysForecastsList from "./3DaysForecastsList";
 import MoreWeatherInfos from "./MoreWeatherInfos";
+import SevenDaysForecastsList from "./7DaysForecastsList";
 
 function Main(props) {
   const { weather } = props;
@@ -48,6 +49,8 @@ function Main(props) {
       </div>
 
       <MoreWeatherInfos weather={weather} />
+
+      <SevenDaysForecastsList weather={weather} />
     </main>
   );
 }
