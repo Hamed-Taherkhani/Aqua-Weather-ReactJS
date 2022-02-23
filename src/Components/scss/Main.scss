@@ -1,9 +1,10 @@
 @import "./config";
 
 .app-main {
+  padding-top: 140px;
+
   .temp {
     text-align: center;
-    margin-top: 70px;
     opacity: 0.8;
 
     sup {
