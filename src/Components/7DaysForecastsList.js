@@ -5,7 +5,7 @@ import date from "../Date/date";
 import TempChart from "./TempChart";
 
 function SevenDaysForecastsList(props) {
-  const { weather } = props;
+  const { weather, togglePage } = props;
   let dailyWeatherArr = [];
   if (weather.daily != undefined) dailyWeatherArr = weather.daily;
 
@@ -13,9 +13,14 @@ function SevenDaysForecastsList(props) {
   const todayIndex = today.getDay() - 1;
 
   return (
-    <div className="seven-days-forecast-list">
+    <div className="seven-days-forecast-list" id="seven-days-forecast-list">
       <header>
-        <button className="back-btn">back</button>
+        <button
+          className="back-btn"
+          onClick={() => togglePage("seven-days-forecast-list")}
+        >
+          back
+        </button>
         <div className="page-name">7 - Days forecasts</div>
       </header>
 

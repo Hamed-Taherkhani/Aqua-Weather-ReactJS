@@ -45,14 +45,33 @@ function Main(props) {
       <ThreeDaysForecastsList weather={weather} />
 
       <div className="more-forecasts">
-        <button className="more-btn">7 - Days forecasts</button>
+        <button
+          className="more-btn"
+          onClick={() => togglePage("seven-days-forecast-list")}
+        >
+          7 - Days forecasts
+        </button>
       </div>
 
       <MoreWeatherInfos weather={weather} />
 
-      <SevenDaysForecastsList weather={weather} />
+      <SevenDaysForecastsList weather={weather} togglePage={togglePage} />
     </main>
   );
+}
+
+let flag = false;
+function togglePage(id) {
+  const pageElement = document.getElementById(id);
+  if (!flag) {
+    pageElement.style.left = 0;
+    pageElement.style.borderRadius = 0;
+  } else {
+    pageElement.style.left = "100%";
+    pageElement.style.borderRadius = "25px";
+  }
+
+  flag = !flag;
 }
 
 export default Main;

@@ -3,10 +3,12 @@
 .seven-days-forecast-list {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 100%;
   width: 100vw;
   height: 100vh;
+  border-radius: 25px;
   background-color: #1b1b1b;
+  transition: left 300ms ease, border-radius 900ms ease;
   @include flex(center, center);
 
   header {
