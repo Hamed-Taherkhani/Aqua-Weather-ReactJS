@@ -17,7 +17,9 @@ function Main(props) {
 
       <div className="temp ">
         <strong className="amount ">
-          {weather.main != null ? Math.round(weather.main.temp) : null}
+          {weather.current != undefined
+            ? Math.round(weather.current.temp)
+            : null}
         </strong>
         <sup className="unit">
           C<sup className="symbol">o</sup>
@@ -25,7 +27,9 @@ function Main(props) {
       </div>
 
       <div className="weather-condition">
-        {weather.weather != undefined ? weather.weather[0].description : null}
+        {weather.current != undefined
+          ? weather.current.weather[0].description
+          : null}
       </div>
 
       <div className="aqi flex-row">

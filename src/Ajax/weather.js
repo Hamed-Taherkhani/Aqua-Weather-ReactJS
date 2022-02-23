@@ -1,5 +1,4 @@
 import axios from "axios";
-import getGeocoding from "./geocoding";
 
 const KEY = "376247ddbe706b93323968f0ee0237e4",
   requestCurrentWeather = axios.create({
@@ -7,10 +6,10 @@ const KEY = "376247ddbe706b93323968f0ee0237e4",
     timeout: 2000,
   });
 
-async function getCurrentWeather(lat, lon) {
+async function getWeather(lat, lon, exclude) {
   try {
     // Make URL of location Geocode:
-    const URL = getURL(lat, lon, KEY);
+    const URL = getURL(lat, lon, exclude, KEY);
 
     // Get and return current weather infos:
     const response = await requestCurrentWeather.get(URL);
@@ -21,8 +20,10 @@ async function getCurrentWeather(lat, lon) {
   }
 }
 
-function getURL(lat, lon, key) {
-  return `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${key}`;
+function getURL(lat, lon, exclude, key) {
+  return `/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=${exclude.join(
+    ","
+  )}&appid=${key}`;
 }
 
-export default getCurrentWeather;
+export default getWeather;

@@ -1,7 +1,7 @@
 import getGeocoding from "./geocoding";
-import getCurrentWeather from "./currentWeather";
+import getWeather from "./weather";
 
-async function getCurrentWeatherData(cityName) {
+async function getWeatherData(cityName) {
   try {
     // Get location geocode:
     const geoCode = await getGeocoding(cityName);
@@ -10,12 +10,12 @@ async function getCurrentWeatherData(cityName) {
     const { lat, lon } = geoCode;
 
     // Get location current weather:
-    const currentWeather = await getCurrentWeather(lat, lon);
+    const weather = await getWeather(lat, lon, ["alerts", "minutely"]);
 
-    return { geo_code: geoCode, current_weather: currentWeather };
+    return { location: geoCode, weather: weather };
   } catch (error) {
     return Promise.reject(error);
   }
 }
 
-export default getCurrentWeatherData;
+export default getWeatherData;

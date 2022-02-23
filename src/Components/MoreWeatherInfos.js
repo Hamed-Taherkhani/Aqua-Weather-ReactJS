@@ -19,15 +19,19 @@ function MoreWeatherInfos(props) {
           <tbody>
             <tr>
               <td>
-                <section className="head-title">Real fell</section>
+                <section className="head-title">Real feel</section>
                 <section className="amount">
-                  {weather.main != null ? weather.main.feels_like : null}
+                  {weather.current != undefined
+                    ? weather.current.feels_like
+                    : null}
                 </section>
               </td>
               <td>
                 <section className="head-title">Humidity</section>
                 <section className="amount">
-                  {weather.main != null ? weather.main.humidity : null}
+                  {weather.current != undefined
+                    ? weather.current.humidity
+                    : null}
                   <span>%</span>
                 </section>
               </td>
@@ -37,15 +41,18 @@ function MoreWeatherInfos(props) {
               <td>
                 <section className="head-title">Pursuer</section>
                 <section className="amount">
-                  {weather.main != null ? weather.main.pressure : null}
+                  {weather.current != undefined
+                    ? weather.current.pressure
+                    : null}
                   <span>mbar</span>
                 </section>
               </td>
               <td>
-                <section className="head-title">Sea level</section>
+                <section className="head-title">UVI</section>
                 <section className="amount">
-                  {weather.main != null ? weather.main.sea_level : null}
-                  <span>m</span>
+                  {weather.current != undefined
+                    ? Math.round(weather.current.uvi)
+                    : null}
                 </section>
               </td>
             </tr>
@@ -53,15 +60,16 @@ function MoreWeatherInfos(props) {
               <td>
                 <section className="head-title">Wind speed</section>
                 <section className="amount">
-                  {weather.wind != null ? weather.wind.speed : null}
+                  {weather.current != undefined
+                    ? weather.current.wind_speed
+                    : null}
                   <span>km/h</span>
                 </section>
               </td>
               <td>
-                <section className="head-title">Sea level</section>
+                <section className="head-title">Clouds</section>
                 <section className="amount">
-                  {weather.main != null ? weather.main.sea_level : null}
-                  <span>m</span>
+                  {weather.current != undefined ? weather.current.clouds : null}
                 </section>
               </td>
             </tr>

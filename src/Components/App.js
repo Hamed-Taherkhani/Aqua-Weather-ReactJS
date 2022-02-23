@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./scss/App.scss";
 import Header from "./Header";
 import Main from "./Main";
-import getCurrentWeatherData from "../Ajax/ajax";
+import getWeatherData from "../Ajax/ajax";
 
 import "../Ajax/ajax";
 
 function App() {
-  // State to saving weather and location info:
+  // State to saving weather and location infos:
   const [weather, setWeather] = useState({}),
     [location, setLocation] = useState({});
 
@@ -30,16 +30,16 @@ function App() {
 async function getWeatherAndUpdateAppInfos(setWeather, setLocation) {
   let data = {};
   try {
-    data = await getCurrentWeatherData("Takestan");
-    const { geo_code, current_weather } = data;
+    data = await getWeatherData("Takestan");
+    const { location, weather } = data;
 
-    console.log(geo_code, current_weather);
+    console.log(location, weather);
 
     // Update location state:
-    setLocation(geo_code);
+    setLocation(location);
 
-    // Update current weather state:
-    setWeather(current_weather);
+    // Update weather state:
+    setWeather(weather);
   } catch (error) {
     console.log(error);
   }
