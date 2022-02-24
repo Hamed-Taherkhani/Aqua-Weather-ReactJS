@@ -19,6 +19,7 @@ function App() {
 
   return (
     <div className="app">
+      <div id="bg"></div>
       <div className="container">
         <Header location={location} />
         <Main weather={weather} />

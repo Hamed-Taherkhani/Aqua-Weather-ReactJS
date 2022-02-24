@@ -1,16 +1,22 @@
 import React from "react";
 import ForecastsListItem from "./3DaysForecastsListItem";
 import getIconById from "../Icon/icons";
+import date from "../Date/date";
 
 function DaysForecastsList(props) {
   const { weather } = props;
   const items = [{}, {}, {}];
+  const dayOfWeek = [
+    "Today",
+    "Tomorrow",
+    date.getDayOfWeek(new Date().getDay() + 1),
+  ];
 
   return (
     <ul className="days-forecast-list">
       {items.map((item, index) => (
         <ForecastsListItem
-          day="Today"
+          day={dayOfWeek[index]}
           condition={
             weather.daily !== undefined
               ? weather.daily[index].weather[0].main
@@ -34,6 +40,7 @@ function DaysForecastsList(props) {
                 )
               : null
           }
+          key={index}
         />
       ))}
     </ul>
