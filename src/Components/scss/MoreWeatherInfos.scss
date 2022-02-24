@@ -35,7 +35,11 @@
         white-space: nowrap;
         position: absolute;
         color: #fff;
-        opacity: 0.85;
+        opacity: 0.8;
+
+        span {
+          margin-right: 2px;
+        }
       }
 
       .sunset-time {
@@ -57,12 +61,12 @@
         td {
           .head-title {
             font-size: map-get($font-size, tiny);
-            margin-bottom: 0.1rem;
+            margin-bottom: 0.2rem;
             color: map-get($font-color, light-gray);
           }
 
           .amount {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-size: map-get($font-size, small);
           }
         }
