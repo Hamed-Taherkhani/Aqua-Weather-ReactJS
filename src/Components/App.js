@@ -3,6 +3,7 @@ import "./scss/App.scss";
 import Header from "./Header";
 import Main from "./Main";
 import getWeatherData from "../Ajax/ajax";
+import Preload from "./Preload";
 
 import "../Ajax/ajax";
 
@@ -19,7 +20,10 @@ function App() {
 
   return (
     <div className="app">
+      <Preload />
+
       <div id="bg"></div>
+
       <div className="container">
         <Header location={location} />
         <Main weather={weather} />
