@@ -3,6 +3,7 @@ import SevenDaysForecastsListItem from "./7DaysForecastsListItem";
 import "./scss/SevenDaysForecastsList.scss";
 import date from "../Date/date";
 import TempChart from "./TempChart";
+import getIconById from "../Icon/icons";
 
 function SevenDaysForecastsList(props) {
   const { weather, togglePage } = props;
@@ -39,6 +40,7 @@ function SevenDaysForecastsList(props) {
                 date={`${
                   new Date(Date.now() + index * 86400 * 1000).getMonth() + 1
                 }/${new Date(Date.now() + index * 86400 * 1000).getDate()}`}
+                icon={getIconById(item.weather[0].id, item.weather[0].icon)}
                 key={index}
               />
             ))}
@@ -61,6 +63,7 @@ function SevenDaysForecastsList(props) {
                   direction: item.wind_deg,
                   speed: item.wind_speed,
                 }}
+                icon={getIconById(item.weather[0].id, "n")}
                 key={index}
               />
             ))}

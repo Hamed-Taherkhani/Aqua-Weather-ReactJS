@@ -41,12 +41,12 @@ icon.set("cloudy-night", cloudyNight);
 
 function getIconById(id, icon) {
   if (id === 800) {
-    if (icon === "01d") return getIconByName("sun");
-    else if (icon === "01n") return getIconByName("moon");
+    if (icon.includes("d")) return getIconByName("sun");
+    else if (icon.includes("n")) return getIconByName("moon");
   }
   if (id > 800 && id < 900) {
-    if (icon.contains("d")) return getIconByName("cloudy-day");
-    else if (icon.contains("n")) return getIconByName("cloudy-night");
+    if (icon.includes("d")) return getIconByName("cloudy-day");
+    else if (icon.includes("n")) return getIconByName("cloudy-night");
   }
   if (id > 700 && id < 800) return getIconByName("atmosphere");
   if (id >= 600 && id < 700) return getIconByName("snow");

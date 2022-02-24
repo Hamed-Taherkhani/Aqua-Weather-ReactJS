@@ -2,7 +2,7 @@ import React from "react";
 import "./scss/7DaysForecastsListItem.scss";
 
 function SevenDaysForecastsListItem(props) {
-  const { dayOfWeek, date, wind } = props;
+  const { dayOfWeek, date, wind, icon } = props;
 
   return (
     <li className="list-item flex-column">
@@ -12,7 +12,7 @@ function SevenDaysForecastsListItem(props) {
       </section>
 
       <section className="condition-icon">
-        <img src="" alt=" " />
+        <img src={icon} />
       </section>
 
       <section className="wind flex-row">
