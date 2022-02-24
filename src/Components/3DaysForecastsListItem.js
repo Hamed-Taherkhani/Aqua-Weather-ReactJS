@@ -7,7 +7,9 @@ function ForecastsListItem(props) {
   return (
     <li className="forecasts-list-item flex-row">
       <div className="left flex-row">
-        <section className="condition-icon">{icon}</section>
+        <section className="condition-icon">
+          <img src={icon} />
+        </section>
         <section className="week-day">{day}</section>
         <span> - </span>
         <section className="condition">{condition}</section>
