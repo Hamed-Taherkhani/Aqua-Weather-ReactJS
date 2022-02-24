@@ -1,16 +1,35 @@
 @import "./config";
 
 .forecasts-list-item {
-  @include flex(space-between, null);
-  padding: 0.5rem 1rem;
+  @include flex(space-between, center);
+  padding: 0.3rem 2rem;
 
   .left {
+    @include flex(null, center);
+    font-size: map-get($font-size, small);
+
     .condition-icon {
       margin-right: 5px;
+      width: 22px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .week-day {
+      margin-right: 3px;
+    }
+
+    .condition {
+      margin-left: 3px;
     }
   }
 
   .right {
+    font-size: map-get($font-size, small);
+
     sup {
       vertical-align: super;
       font-size: map-get($font-size, tiny);
