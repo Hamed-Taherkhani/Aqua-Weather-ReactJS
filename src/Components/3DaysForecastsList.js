@@ -1,7 +1,7 @@
 import React from "react";
 import ForecastsListItem from "./3DaysForecastsListItem";
 import date from "../Date/date";
-import getIconById from "../Resources/Icons/icons";
+import getIconById from "../Icon/icons";
 
 function DaysForecastsList(props) {
   const { weather } = props;
