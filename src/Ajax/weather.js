@@ -3,7 +3,7 @@ import axios from "axios";
 const KEY = "376247ddbe706b93323968f0ee0237e4",
   requestCurrentWeather = axios.create({
     baseURL: "https://api.openweathermap.org/data/2.5/",
-    timeout: 500,
+    timeout: 3000,
   });
 
 async function getWeather(lat, lon, exclude) {
@@ -16,7 +16,7 @@ async function getWeather(lat, lon, exclude) {
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.text);
   }
 }
 

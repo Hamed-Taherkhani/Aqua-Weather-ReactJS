@@ -4,7 +4,7 @@ const KEY = "836059622a1ffd17acb7fad70ef9f70f",
   // Create a axios object and set some early request's configurations:
   request = axios.create({
     baseURL: "http://api.openweathermap.org/geo/1.0/",
-    timeout: 500,
+    timeout: 3000,
   });
 
 /**

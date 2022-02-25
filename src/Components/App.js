@@ -24,6 +24,8 @@ function App() {
   async function getWeatherAndUpdateAppInfos() {
     let data = {};
     try {
+      let flag = true;
+
       data = await getWeatherData("Takestan");
       const { location, weather } = data;
 
@@ -36,9 +38,14 @@ function App() {
       setWeather(weather);
 
       // Set data is successfully fetched:
-      setIsFetched((prevState) => !prevState);
+      if (location !== undefined && weather !== undefined) {
+        setIsFetched((prevState) => !prevState);
+        flag = !flag;
+      } else throw "";
     } catch (error) {
-      console.log(error);
+      setTimeout(() => {
+        getWeatherAndUpdateAppInfos();
+      }, 2000);
     }
   }
 
@@ -56,8 +63,13 @@ function App() {
         style={!isFetched ? { display: "none" } : null}
       >
         <div id="bg"></div>
-        <Header location={location} />
-        <Main weather={weather} />
+
+        {isFetched ? (
+          <>
+            <Header location={location} />
+            <Main weather={weather} />
+          </>
+        ) : null}
       </div>
     </div>
   );
