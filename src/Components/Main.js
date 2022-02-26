@@ -63,6 +63,7 @@ function Main(props) {
 let flag = false;
 function togglePage(id) {
   const pageElement = document.getElementById(id);
+
   if (!flag) {
     pageElement.style.left = 0;
     pageElement.style.borderRadius = 0;

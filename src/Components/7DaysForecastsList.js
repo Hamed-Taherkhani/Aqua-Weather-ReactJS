@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SevenDaysForecastsListItem from "./7DaysForecastsListItem";
 import "./scss/SevenDaysForecastsList.scss";
 import date from "../Date/date";
 import TempChart from "./TempChart";
 import getIconById from "../Icon/icons";
+import backIco from "./../Resources/Icons/back.png";
 
 function SevenDaysForecastsList(props) {
   const { weather, togglePage } = props;
@@ -17,12 +18,12 @@ function SevenDaysForecastsList(props) {
     <div className="seven-days-forecast-list" id="seven-days-forecast-list">
       <header>
         <button
-          className="back-btn"
+          className="back-btn flex-row"
           onClick={() => togglePage("seven-days-forecast-list")}
         >
-          back
+          <img src={backIco} />
+          <div className="page-name">7 - Days forecasts</div>
         </button>
-        <div className="page-name">7 - Days forecasts</div>
       </header>
 
       <main className="flex-row">

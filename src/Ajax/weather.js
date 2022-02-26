@@ -16,7 +16,7 @@ async function getWeather(lat, lon, exclude) {
 
     return response.data;
   } catch (error) {
-    console.log(error.text);
+    return Promise.reject(error);
   }
 }
 

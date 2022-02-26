@@ -20,25 +20,25 @@ const KEY = "836059622a1ffd17acb7fad70ef9f70f",
  *     place_names: Object (location name in some langues)
  * }
  */
-async function getGeocoding(cityName) {
+async function getGeocoding(cityName, limit) {
   // Make URL with customized options:
-  const URL = getURL(cityName, 1, KEY);
+  const URL = getURL(cityName, limit, KEY);
 
   // Send request to url and get response:
   try {
     const response = await request.get(URL);
-    const resData = response.data[0],
-      locationData = {
-        lat: resData.lat,
-        lon: resData.lon,
-        name: resData.name,
-        state: resData.state,
-        place_names: resData.local_names,
-      };
+    const resDataArr = response.data;
 
-    return locationData;
+    return resDataArr.map((item) => ({
+      lat: item.lat,
+      lon: item.lon,
+      name: item.name,
+      state: item.state,
+      country: item.country,
+      place_names: item.local_names,
+    }));
   } catch (error) {
-    return error;
+    return Promise.reject(error);
   }
 }
 

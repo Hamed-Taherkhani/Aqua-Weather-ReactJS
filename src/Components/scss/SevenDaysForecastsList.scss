@@ -4,24 +4,36 @@
   position: fixed;
   top: 0;
   left: 100%;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   border-radius: 25px;
   background-color: #1b1b1b;
-  transition: left 300ms ease, border-radius 900ms ease;
+  transition: 300ms ease-out, border-radius 900ms ease-out;
+  z-index: 1;
   @include flex(center, center);
 
   header {
     padding: 1rem;
 
     .back-btn {
-      color: #fff;
-      margin-bottom: 1rem;
-    }
+      margin: 0 0 1rem -0.7rem;
+      width: 35px;
 
-    .page-name {
-      font-size: map-get($font-size, larger);
-      font-weight: map-get($font-weight, regular);
+      .page-name {
+        font-size: map-get($font-size, large);
+        font-weight: map-get($font-weight, bold);
+        color: #fff;
+        white-space: nowrap;
+        margin-left: 0.5rem;
+        color: #cccccc;
+        position: relative;
+        top: 2px;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 
@@ -33,6 +45,22 @@
       width: 100%;
       overflow: auto hidden;
       margin: 0 1rem;
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: #f1f1f10c;
+        border-radius: 2px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: #555;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #3f3f3f;
+      }
 
       .list {
         min-width: max-content;
