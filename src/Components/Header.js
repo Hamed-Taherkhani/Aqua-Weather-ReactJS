@@ -6,6 +6,7 @@ import getWeather from "../Ajax/weather";
 import backIco from "./../Resources/Icons/back.png";
 import {
   append,
+  getItem,
   isKeyRegistered,
   saveInLocalStorage,
 } from "../LocalStorage/LocalStorage";
@@ -14,7 +15,7 @@ function Header(props) {
   const { location, setLocation, setWeather } = props;
 
   // To save similar results list:
-  const [resultsList, setResultsList] = useState([]);
+  const [resultsList, setResultsList] = useState(getItem("locations"));
 
   // Determine fetching is on or not:
   const [isFetching, setIsFetching] = useState(false);
@@ -25,7 +26,7 @@ function Header(props) {
         <li className="header-item icon">
           <button
             className="icon"
-            onClick={() => togglePage("search-location")}
+            onClick={() => togglePage("search-location", setResultsList)}
           >
             <img
               src="https://img.icons8.com/ios-glyphs/30/ffffff/plus-math.png"
@@ -37,7 +38,7 @@ function Header(props) {
             <header>
               <button
                 className="back-btn flex-row"
-                onClick={() => togglePage("search-location")}
+                onClick={() => togglePage("search-location", setResultsList)}
               >
                 <img src={backIco} />
                 <div className="page-name">Search location</div>
@@ -69,10 +70,10 @@ function Header(props) {
                     setLocation,
                     setWeather
                   );
-                  togglePage("search-location");
+                  togglePage("search-location", setResultsList);
                 }}
               >
-                {resultsList.length !== 0
+                {resultsList !== undefined
                   ? resultsList.map((item, index) => (
                       <li className="result" key={index} index={index}>
                         {item.name} - {item.state} - {item.country}
@@ -121,11 +122,12 @@ function getSimilarResultsList(e, setResultsList, setIsFetching) {
       console.log(res);
       setResultsList(res);
       setIsFetching(false);
+
       inputElement.value = "";
     })
     .catch((err) => {
       setTimeout(() => {
-        getSimilarResultsList(e, setResultsList);
+        getSimilarResultsList(e, setResultsList, setIsFetching);
       }, 1000);
 
       console.log(err);
@@ -137,18 +139,27 @@ function getCityGeocode(
   resultsList,
   setResultsList,
   setLocation,
-  setWeather
+  setWeather,
+  isErrorOccurred
 ) {
   const index = e.target.getAttribute("index");
-  const { lat, lon } = resultsList[index];
-  console.log(resultsList[index]);
+  const { country, lat, lon, name, state } = resultsList[index];
+  const locationObj = {
+    country: country,
+    lat: lat,
+    lon: lon,
+    name: name,
+    state: state,
+  };
 
-  // Saving Geocode in Local Storage:
-  if (isKeyRegistered("locations"))
-    // If key is registered append to previous locations:
-    append("locations", [resultsList[index]]);
-  // If not, create new key/value pairs and save data:
-  else saveInLocalStorage("locations", [resultsList[index]]);
+  if (!isErrorOccurred) {
+    // Saving Geocode in Local Storage:
+    if (isKeyRegistered("locations"))
+      // If key is registered append to previous locations:
+      append("locations", [locationObj]);
+    // If not, create new key/value pairs and save data:
+    else saveInLocalStorage("locations", [locationObj]);
+  }
 
   getWeather(lat, lon, ["alerts", "minutely"])
     .then((res) => {
@@ -157,11 +168,23 @@ function getCityGeocode(
       setResultsList([]);
       console.log(res);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      setTimeout(() => {
+        getCityGeocode(
+          e,
+          resultsList,
+          setResultsList,
+          setLocation,
+          setWeather,
+          true
+        );
+      }, 1000);
+      console.log(err);
+    });
 }
 
 let flag = false;
-function togglePage(id) {
+function togglePage(id, setResultsList) {
   // Find page element with its id:
   const pageElement = document.getElementById(id);
 
@@ -171,6 +194,7 @@ function togglePage(id) {
   } else {
     pageElement.style.left = 0;
     pageElement.style.borderRadius = 0;
+    setResultsList(getItem("locations"));
   }
 
   flag = !flag;

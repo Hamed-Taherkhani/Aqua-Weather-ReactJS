@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./scss/App.scss";
 import Header from "./Header";
 import Main from "./Main";
-import getWeatherData from "../Ajax/ajax";
 import Preload from "./Preload";
-import "../Ajax/ajax";
+import { getItem, isKeyRegistered } from "../LocalStorage/LocalStorage";
+import getWeather from "../Ajax/weather";
 
 function App() {
   // State to saving weather and location infos:
@@ -15,37 +15,33 @@ function App() {
   const [isFetched, setIsFetched] = useState(false);
 
   useEffect(function effect() {
-    // After component mounting, make ajax requests to fetch necessary infos:
-    // like: weather and ...
-    getWeatherAndUpdateAppInfos("Moscow", 1);
+    getLocationsFromLocalStorage();
   }, []);
 
-  async function getWeatherAndUpdateAppInfos(locationName, limit) {
-    let data = {};
-    try {
-      let flag = true;
-
-      data = await getWeatherData(locationName, limit);
-      const { location, weather } = data;
-
-      console.log(location, weather);
-
-      // Update location state:
-      setLocation(location[0]);
-
-      // Update weather state:
-      setWeather(weather);
-
-      // Set data is successfully fetched:
-      if (location !== undefined && weather !== undefined) {
-        setIsFetched((prevState) => true);
-        flag = !flag;
-      } else throw "";
-    } catch (error) {
+  async function getLocationsFromLocalStorage() {
+    // If key is not registered,
+    if (!isKeyRegistered("locations")) {
       setTimeout(() => {
-        getWeatherAndUpdateAppInfos(locationName, limit);
-      }, 1000);
+        setIsFetched(true);
+      }, 2000);
+      return;
     }
+
+    const item = getItem("locations"),
+      { lat, lon } = item[0];
+
+    getWeather(lat, lon, ["alerts", "minutely"])
+      .then((res) => {
+        setLocation(item[0]);
+        setWeather(res);
+        setIsFetched(true);
+      })
+      .catch((err) => {
+        setTimeout(() => {
+          getLocationsFromLocalStorage();
+        }, 1000);
+        console.log(err);
+      });
   }
 
   const setLocationState = (locationObj) => {
