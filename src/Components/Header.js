@@ -4,6 +4,11 @@ import getGeocoding from "../Ajax/geocoding";
 import Loading from "./Loading";
 import getWeather from "../Ajax/weather";
 import backIco from "./../Resources/Icons/back.png";
+import {
+  append,
+  isKeyRegistered,
+  saveInLocalStorage,
+} from "../LocalStorage/LocalStorage";
 
 function Header(props) {
   const { location, setLocation, setWeather } = props;
@@ -122,6 +127,8 @@ function getSimilarResultsList(e, setResultsList, setIsFetching) {
       setTimeout(() => {
         getSimilarResultsList(e, setResultsList);
       }, 1000);
+
+      console.log(err);
     });
 }
 
@@ -134,6 +141,14 @@ function getCityGeocode(
 ) {
   const index = e.target.getAttribute("index");
   const { lat, lon } = resultsList[index];
+  console.log(resultsList[index]);
+
+  // Saving Geocode in Local Storage:
+  if (isKeyRegistered("locations"))
+    // If key is registered append to previous locations:
+    append("locations", [resultsList[index]]);
+  // If not, create new key/value pairs and save data:
+  else saveInLocalStorage("locations", [resultsList[index]]);
 
   getWeather(lat, lon, ["alerts", "minutely"])
     .then((res) => {
