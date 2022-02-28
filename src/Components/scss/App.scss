@@ -17,7 +17,7 @@
   top: 0;
   left: 0;
   z-index: -100;
-  background: linear-gradient($bg-gradient);
+  opacity: 0;
 }
 
 button {
@@ -61,4 +61,13 @@ button {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #414141;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

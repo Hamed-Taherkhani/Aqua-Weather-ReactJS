@@ -10,6 +10,7 @@ import {
   isKeyRegistered,
   saveInLocalStorage,
 } from "../LocalStorage/LocalStorage";
+import { determineBackgroundColor } from "./App";
 
 function Header(props) {
   const { location, setLocation, setWeather } = props;
@@ -122,7 +123,6 @@ function getSimilarResultsList(e, setResultsList, setIsFetching) {
       console.log(res);
       setResultsList(res);
       setIsFetching(false);
-
       inputElement.value = "";
     })
     .catch((err) => {
@@ -166,6 +166,7 @@ function getCityGeocode(
       setLocation(resultsList[index]);
       setWeather(res);
       setResultsList([]);
+      determineBackgroundColor(res);
       console.log(res);
     })
     .catch((err) => {
