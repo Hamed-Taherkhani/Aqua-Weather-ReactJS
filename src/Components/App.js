@@ -66,7 +66,9 @@ function App() {
         className="container"
         style={!isFetched ? { display: "none" } : null}
       >
-        <div id="bg"></div>
+        <div id="bg">
+          <div className="weather-condition-img"></div>
+        </div>
 
         {isFetched ? (
           <>
