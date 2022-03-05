@@ -11,6 +11,7 @@ dirs : ./src/ajax/geocoding.js and ./src/ajax/weather.js </br>
 ![1](https://user-images.githubusercontent.com/90506587/156895146-3b52f074-af9e-4230-b67e-5a72396c64c9.png)
 ![2](https://user-images.githubusercontent.com/90506587/156895149-6257c7a8-1600-4c31-bc67-ea91bcac0e63.png)
 ![3](https://user-images.githubusercontent.com/90506587/156895180-c907763b-0edc-409f-92cb-26454dd61010.png)
+![4](https://user-images.githubusercontent.com/90506587/156895374-a07738b6-3855-40d4-9fd4-409f1463f413.png)
 
 
 # Getting Started with Create React App
