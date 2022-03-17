@@ -3,6 +3,7 @@ import "./scss/Main.scss";
 import ThreeDaysForecastsList from "./3DaysForecastsList";
 import MoreWeatherInfos from "./MoreWeatherInfos";
 import SevenDaysForecastsList from "./7DaysForecastsList";
+import HourlyForecasts from "./HourlyForecasts";
 
 function Main(props) {
   const { weather } = props;
@@ -52,6 +53,8 @@ function Main(props) {
           7 - Days forecasts
         </button>
       </div>
+
+      <HourlyForecasts hourlyForecasts={weather.hourly} />
 
       <MoreWeatherInfos weather={weather} />
 

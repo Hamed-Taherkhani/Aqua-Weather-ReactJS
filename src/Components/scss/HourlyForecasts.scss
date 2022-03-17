@@ -1,0 +1,49 @@
+@import "./config";
+
+.hourly-forecasts-list {
+  padding: 0.5rem 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: row;
+  overflow: auto hidden;
+  width: 100%;
+
+  .hourly-forecasts-list-item {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: map-get($font-size, tiny);
+    font-weight: map-get($font-weight, 100);
+    letter-spacing: 0.5px;
+
+    &:first-child {
+      margin-left: 15px;
+    }
+
+    .condition-icon {
+      width: 20px;
+      margin: 8px 0;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #3f3f3f0e;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3f3f3f52;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f3f8f;
+}
