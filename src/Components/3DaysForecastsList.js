@@ -1,7 +1,7 @@
 import React from "react";
 import ForecastsListItem from "./3DaysForecastsListItem";
 import getIconById from "../Icon/icons";
-import date from "../Date/date";
+import { getDayOfWeek } from "../Date/date";
 
 function DaysForecastsList(props) {
   const { weather } = props;
@@ -9,7 +9,7 @@ function DaysForecastsList(props) {
   const dayOfWeek = [
     "Today",
     "Tomorrow",
-    date.getDayOfWeek(new Date().getDay() + 1),
+    getDayOfWeek(new Date(Date.now() + 2 * 86400 * 1000).getDay()),
   ];
 
   return (

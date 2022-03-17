@@ -11,21 +11,23 @@ function HourlyForecasts(props) {
 
   return (
     <ul className="hourly-forecasts-list">
-      {hourlyForecasts.map((item) => {
+      {hourlyForecasts.map((item, index) => {
         const date = new Date(item.dt * 1000);
 
         return (
-          <li className="hourly-forecasts-list-item">
+          <li className="hourly-forecasts-list-item" key={index}>
             <div className="date">
               {date.getHours() !== 0
                 ? date.getHours().toString().padStart(2, 0)
                 : `${date.getMonth() + 1}/${date.getDate()}`}
             </div>
+
             <div className="condition-icon">
               <img
                 src={getIconById(item.weather[0].id, item.weather[0].icon)}
               />
             </div>
+
             <div className="condition">{item.weather[0].main}</div>
           </li>
         );
