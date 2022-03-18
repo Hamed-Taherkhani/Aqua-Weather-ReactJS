@@ -1,11 +1,11 @@
 @import "./config";
 
 .list-item {
-  width: 65px;
+  width: 75px;
   @include flex(null, center);
 
   &:first-child {
-    margin-left: -24px;
+    margin-left: -19px;
   }
 
   .condition-icon {
@@ -33,6 +33,17 @@
 
   .wind {
     margin-top: 10px;
+    align-items: center;
+
+    .direction {
+      width: 15px;
+      margin-right: 3px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
 
     .speed {
       font-size: map-get($font-size, tiny);

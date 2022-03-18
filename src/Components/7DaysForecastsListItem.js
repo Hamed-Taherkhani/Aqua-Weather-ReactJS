@@ -1,5 +1,6 @@
 import React from "react";
 import "./scss/7DaysForecastsListItem.scss";
+import navigatorIco from "./../Resources/Icons/navigator.png";
 
 function SevenDaysForecastsListItem(props) {
   const { dayOfWeek, date, wind, icon } = props;
@@ -17,7 +18,12 @@ function SevenDaysForecastsListItem(props) {
 
       <section className="wind flex-row">
         <section className="direction">
-          {/* {wind !== undefined ? wind.direction : null} */}
+          {wind !== undefined ? (
+            <img
+              src={navigatorIco}
+              style={{ transform: `rotate(${wind.direction + 135}deg)` }}
+            />
+          ) : null}
         </section>
 
         <section className="speed">
