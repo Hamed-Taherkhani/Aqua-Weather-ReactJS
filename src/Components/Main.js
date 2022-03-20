@@ -19,7 +19,7 @@ function Main(props) {
 
       <div className="temp ">
         <strong className="amount ">
-          {weather.current != undefined
+          {weather.current !== undefined
             ? Math.round(weather.current.temp)
             : null}
         </strong>
@@ -29,7 +29,7 @@ function Main(props) {
       </div>
 
       <div className="weather-condition">
-        {weather.current != undefined
+        {weather.current !== undefined
           ? weather.current.weather[0].description
           : null}
       </div>
@@ -37,7 +37,10 @@ function Main(props) {
       <div className="aqi flex-row">
         <div>
           <span className="icon">
-            <img src="https://img.icons8.com/external-those-icons-fill-those-icons/30/ffffff/external-leaf-nature-ecology-those-icons-fill-those-icons-1.png" />
+            <img
+              src="https://img.icons8.com/external-those-icons-fill-those-icons/30/ffffff/external-leaf-nature-ecology-those-icons-fill-those-icons-1.png"
+              alt=""
+            />
           </span>
           AQI <span>20</span>
         </div>

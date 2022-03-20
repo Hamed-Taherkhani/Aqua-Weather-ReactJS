@@ -44,7 +44,6 @@ export function removeFromArray(key, index) {
 export function removePair(key) {
   if (!isKeyRegistered(key)) return;
 
-  const item = storageObj.getItem(key);
   storageObj.removeItem(key);
 }
 

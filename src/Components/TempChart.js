@@ -4,6 +4,8 @@ import "./scss/TempChart.scss";
 function TempChart(props) {
   const { temps, deg } = props;
 
+  if (temps === undefined) return null;
+
   let tempAverage = 0,
     max = Math.abs(temps[0]);
   for (let i = 0; i < temps.length; i++) {

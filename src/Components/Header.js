@@ -41,7 +41,7 @@ function Header(props) {
                 className="back-btn flex-row"
                 onClick={() => togglePage("search-location", setResultsList)}
               >
-                <img src={backIco} />
+                <img src={backIco} alt="" />
                 <div className="page-name">Search location</div>
               </button>
             </header>

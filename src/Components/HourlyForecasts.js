@@ -11,7 +11,7 @@ function HourlyForecasts(props) {
 
   return (
     <ul className="hourly-forecasts-list">
-      {hourlyForecasts.map((item, index) => {
+      {hourlyForecasts?.map((item, index) => {
         const date = new Date(item.dt * 1000);
 
         return (
@@ -25,6 +25,7 @@ function HourlyForecasts(props) {
             <div className="condition-icon">
               <img
                 src={getIconById(item.weather[0].id, item.weather[0].icon)}
+                alt=""
               />
             </div>
 

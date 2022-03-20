@@ -13,7 +13,7 @@ function SevenDaysForecastsListItem(props) {
       </section>
 
       <section className="condition-icon">
-        <img src={icon} />
+        <img src={icon} alt="" />
       </section>
 
       <section className="wind flex-row">
@@ -22,6 +22,7 @@ function SevenDaysForecastsListItem(props) {
             <img
               src={navigatorIco}
               style={{ transform: `rotate(${wind.direction + 135}deg)` }}
+              alt=""
             />
           ) : null}
         </section>

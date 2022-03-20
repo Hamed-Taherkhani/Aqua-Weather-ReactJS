@@ -7,7 +7,7 @@ function Preload() {
   return (
     <div className="preload flex-column">
       <section className="app-icon">
-        <img src={icon} />
+        <img src={icon} alt="" />
       </section>
 
       <Loading text="Connecting ..." />
