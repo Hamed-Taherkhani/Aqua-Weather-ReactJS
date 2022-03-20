@@ -19,16 +19,21 @@ function App() {
   }, []);
 
   async function getLocationsFromLocalStorage() {
+    let item = getItem("locations");
+
     // If key is not registered,
     if (!isKeyRegistered("locations")) {
-      setTimeout(() => {
-        setIsFetched(true);
-      }, 2000);
-      return;
+      item = [
+        {
+          country: "IR",
+          lat: 35.6892523,
+          lon: 51.3896004,
+          name: "Tehran",
+        },
+      ];
     }
 
-    const item = getItem("locations"),
-      { lat, lon } = item[0];
+    const { lat, lon } = item[0];
 
     getWeather(lat, lon, ["alerts", "minutely"])
       .then((res) => {
@@ -100,8 +105,6 @@ export function determineBackgroundColor(res) {
   function changeColor() {
     const now = Math.floor(Date.now() / 1000);
     const themeColorMeta = document.querySelector("meta[name=theme-color]");
-
-    console.log(now, sunrise, sunset);
 
     if (now >= sunrise && now < sunset - 900) {
       background.style.background = "linear-gradient(0, #3ea2e5, #8bc5e3)";

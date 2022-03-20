@@ -9,7 +9,6 @@ import backIco from "./../Resources/Icons/back.png";
 function SevenDaysForecastsList(props) {
   const { weather, togglePage } = props;
   let dailyWeather = weather.daily;
-  console.log(dailyWeather);
 
   return (
     <div className="seven-days-forecast-list" id="seven-days-forecast-list">
@@ -28,7 +27,6 @@ function SevenDaysForecastsList(props) {
           <ul className="list flex-row">
             {dailyWeather?.map((item, index) => {
               const date = new Date(item.dt * 1000);
-              console.log(getDayOfWeek(date.getDay()), date.getDay());
 
               return (
                 <SevenDaysForecastsListItem
