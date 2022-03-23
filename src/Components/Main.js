@@ -10,52 +10,46 @@ function Main(props) {
 
   return (
     <main className="app-main">
-      <div className="app-info" hidden>
-        <h1>
-          <strong>Aqua</strong> Weather
-        </h1>
-        <h2>Get current and forecast weather, everywhere and every time</h2>
-      </div>
-
-      <div className="temp ">
-        <strong className="amount ">
-          {weather.current !== undefined
-            ? Math.round(weather.current.temp)
-            : null}
-        </strong>
-        <sup className="unit">
-          C<sup className="symbol">o</sup>
-        </sup>
-      </div>
-
-      <div className="weather-condition">
-        {weather.current !== undefined
-          ? weather.current.weather[0].description
-          : null}
-      </div>
-
-      <div className="aqi flex-row">
-        <div>
-          <span className="icon">
-            <img
-              src="https://img.icons8.com/external-those-icons-fill-those-icons/30/ffffff/external-leaf-nature-ecology-those-icons-fill-those-icons-1.png"
-              alt=""
-            />
-          </span>
-          AQI <span>20</span>
+      <section className="main-viewport">
+        <div className="app-info" hidden>
+          <h1>
+            <strong>Aqua</strong> Weather
+          </h1>
+          <h2>Get current and forecast weather, everywhere and every time</h2>
         </div>
-      </div>
 
-      <ThreeDaysForecastsList weather={weather} />
+        <section style={{ marginTop: "15vh" }}>
+          <div className="temp ">
+            <strong className="amount ">
+              {weather.current !== undefined
+                ? Math.round(weather.current.temp)
+                : null}
+            </strong>
+            <sup className="unit">
+              C<sup className="symbol">o</sup>
+            </sup>
+          </div>
 
-      <div className="more-forecasts">
-        <button
-          className="more-btn"
-          onClick={() => togglePage("seven-days-forecast-list")}
-        >
-          7 - Days forecasts
-        </button>
-      </div>
+          <div className="weather-condition">
+            {weather.current !== undefined
+              ? weather.current.weather[0].description
+              : null}
+          </div>
+        </section>
+
+        <section>
+          <ThreeDaysForecastsList weather={weather} />
+
+          <div className="more-forecasts">
+            <button
+              className="more-btn"
+              onClick={() => togglePage("seven-days-forecast-list")}
+            >
+              7 - Days forecasts
+            </button>
+          </div>
+        </section>
+      </section>
 
       <HourlyForecasts hourlyForecasts={weather.hourly} />
 

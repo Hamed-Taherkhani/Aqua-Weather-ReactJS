@@ -11,7 +11,7 @@ function ForecastsListItem(props) {
           <img src={icon} alt="" />
         </section>
         <section className="week-day">{day}</section>
-        <span> - </span>
+        <span> . </span>
         <section className="condition">{condition}</section>
       </div>
 

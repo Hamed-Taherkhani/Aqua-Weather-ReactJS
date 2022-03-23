@@ -2,14 +2,14 @@
 
 .hourly-forecasts-list {
   padding: 0.5rem 0;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   display: flex;
   flex-direction: row;
   overflow: auto hidden;
   width: 100%;
 
   .hourly-forecasts-list-item {
-    margin-right: 30px;
+    margin-right: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,20 +19,33 @@
     letter-spacing: 0.5px;
 
     &:first-child {
-      margin-left: 10px;
+      margin-left: 20px;
     }
 
     &:last-child {
-      margin-right: 10px;
+      margin-right: 20px;
     }
 
     .condition-icon {
-      width: 26px;
-      margin: 8px 0;
+      width: 20px;
+      margin: 5px 0;
 
       img {
         width: 100%;
         height: auto;
+      }
+    }
+
+    .temp {
+      font-size: map-get($font-size, normal);
+      font-weight: map-get($font-weight, medium);
+      margin-top: 5px;
+
+      .circle {
+        position: relative;
+        bottom: 7px;
+        left: 1px;
+        font-size: 0.47rem;
       }
     }
   }

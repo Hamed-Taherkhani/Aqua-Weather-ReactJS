@@ -1,7 +1,15 @@
 @import "./config";
 
 .app-main {
-  padding-top: 140px;
+  margin-top: 55px;
+
+  .main-viewport {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85vh;
+    min-height: 400px;
+  }
 
   .temp {
     text-align: center;
@@ -33,28 +41,6 @@
   .weather-condition {
     text-align: center;
     margin-top: 20px;
-  }
-
-  .aqi {
-    @include flex(center, center);
-    margin: 5px 0 80px 0;
-    font-size: map-get($font-size, smallest);
-
-    & > div {
-      background-color: #72727242;
-      padding: 0.3rem 0.6rem;
-      border-radius: 20px;
-
-      .icon {
-        display: inline-block;
-        width: 12px;
-
-        img {
-          width: 100%;
-          height: auto;
-        }
-      }
-    }
   }
 
   .more-forecasts {

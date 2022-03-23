@@ -1,11 +1,14 @@
 import React from "react";
 import getIconById from "../Icon/icons";
+import { buildWindComponent } from "./7DaysForecastsListItem";
 
 // Import styles sheet:
 import "./scss/HourlyForecasts.scss";
 
 function HourlyForecasts(props) {
   const { hourlyForecasts } = props;
+
+  console.log(hourlyForecasts);
 
   return (
     <ul className="hourly-forecasts-list">
@@ -15,9 +18,16 @@ function HourlyForecasts(props) {
         return (
           <li className="hourly-forecasts-list-item" key={index}>
             <div className="date">
-              {date.getHours() !== 0
+              {index === 0
+                ? "Now"
+                : date.getHours() !== 0
                 ? date.getHours().toString().padStart(2, 0)
                 : `${date.getMonth() + 1}/${date.getDate()}`}
+            </div>
+
+            <div className="temp">
+              {Math.round(item.temp)}
+              <span className="circle">o</span>
             </div>
 
             <div className="condition-icon">
@@ -27,7 +37,10 @@ function HourlyForecasts(props) {
               />
             </div>
 
-            <div className="condition">{item.weather[0].main}</div>
+            {buildWindComponent({
+              direction: item.wind_deg,
+              speed: item.wind_speed,
+            })}
           </li>
         );
       })}

@@ -12,31 +12,43 @@ function SevenDaysForecastsListItem(props) {
         <section className="date-of-day">{date}</section>
       </section>
 
-      <section className="condition-icon">
+      <section
+        className={
+          wind !== undefined
+            ? "condition-icon night-weather-icon"
+            : "condition-icon"
+        }
+      >
         <img src={icon} alt="" />
       </section>
 
-      <section className="wind flex-row">
-        <section className="direction">
-          {wind !== undefined ? (
-            <img
-              src={navigatorIco}
-              style={{ transform: `rotate(${wind.direction + 135}deg)` }}
-              alt=""
-            />
-          ) : null}
-        </section>
-
-        <section className="speed">
-          {wind !== undefined ? (
-            <>
-              {wind.speed}
-              <span>km / h</span>
-            </>
-          ) : null}
-        </section>
-      </section>
+      {buildWindComponent(wind)}
     </li>
+  );
+}
+
+export function buildWindComponent(wind) {
+  return (
+    <section className="wind flex-row">
+      <section className="direction">
+        {wind !== undefined ? (
+          <img
+            src={navigatorIco}
+            style={{ transform: `rotate(${wind.direction + 135}deg)` }}
+            alt=""
+          />
+        ) : null}
+      </section>
+
+      <section className="speed">
+        {wind !== undefined ? (
+          <>
+            {wind.speed}
+            <span>km / h</span>
+          </>
+        ) : null}
+      </section>
+    </section>
   );
 }
 
