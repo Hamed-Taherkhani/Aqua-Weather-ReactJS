@@ -2,7 +2,7 @@
 
 .forecasts-list-item {
   @include flex(space-between, center);
-  padding: 0.3rem 2rem;
+  padding: 0.5rem 2rem;
 
   .left {
     @include flex(null, center);

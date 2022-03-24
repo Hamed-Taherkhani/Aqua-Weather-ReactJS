@@ -13,28 +13,28 @@
 
   .temp {
     text-align: center;
-    opacity: 0.8;
+    opacity: 0.75;
+    position: relative;
 
     sup {
       vertical-align: super;
     }
 
     .amount {
-      font-size: map-get($font-size, massive) * 2.5;
+      font-size: map-get($font-size, massive) * 3;
       font-weight: map-get($font-weight, regular);
     }
 
     .unit {
-      position: relative;
-      bottom: 4rem;
-      right: 10px;
-      font-size: map-get($font-size, large);
+      position: absolute;
+      top: 0;
+      font-size: map-get($font-size, normal);
     }
 
     .symbol {
       position: relative;
       left: 2px;
-      font-size: map-get($font-size, tiny);
+      font-size: 0.55rem;
     }
   }
 
