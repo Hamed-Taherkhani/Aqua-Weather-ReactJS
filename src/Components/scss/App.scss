@@ -1,6 +1,7 @@
 @import "./config";
 @import "./css-reset.scss";
 @import "@fontsource/ubuntu";
+@import "@fontsource/barlow";
 
 .app {
   min-height: 100vh;
@@ -8,6 +9,10 @@
   color: map-get($font-color, white-c);
   font-family: "ubuntu", sans-serif;
   user-select: none;
+}
+
+.number {
+  font-family: "barlow", sans-serif;
 }
 
 #bg {

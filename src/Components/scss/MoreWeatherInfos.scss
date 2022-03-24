@@ -61,12 +61,12 @@
         td {
           .head-title {
             font-size: map-get($font-size, tiny);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.5rem;
             color: map-get($font-color, light-gray);
           }
 
           .amount {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             font-size: map-get($font-size, small);
           }
         }

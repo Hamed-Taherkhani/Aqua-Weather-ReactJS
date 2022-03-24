@@ -17,7 +17,7 @@ function HourlyForecasts(props) {
 
         return (
           <li className="hourly-forecasts-list-item" key={index}>
-            <div className="date">
+            <div className="date number">
               {index === 0
                 ? "Now"
                 : date.getHours() !== 0
@@ -25,7 +25,7 @@ function HourlyForecasts(props) {
                 : `${date.getMonth() + 1}/${date.getDate()}`}
             </div>
 
-            <div className="temp">
+            <div className="temp number">
               {Math.round(item.temp)}
               <span className="circle">o</span>
             </div>

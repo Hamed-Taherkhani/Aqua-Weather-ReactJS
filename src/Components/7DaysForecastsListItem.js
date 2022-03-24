@@ -7,7 +7,7 @@ function SevenDaysForecastsListItem(props) {
 
   return (
     <li className="list-item flex-column">
-      <section className="date">
+      <section className="date number">
         <section className="day-of-week">{dayOfWeek}</section>
         <section className="date-of-day">{date}</section>
       </section>
@@ -43,7 +43,7 @@ export function buildWindComponent(wind) {
       <section className="speed">
         {wind !== undefined ? (
           <>
-            {wind.speed}
+            <span className="number">{wind.speed}</span>
             <span>km / h</span>
           </>
         ) : null}

@@ -15,7 +15,7 @@ function ForecastsListItem(props) {
         <section className="condition">{condition}</section>
       </div>
 
-      <div className="right flex-row">
+      <div className="right number flex-row">
         <section className="max-temp">
           {temp.max}
           <sup>o</sup>

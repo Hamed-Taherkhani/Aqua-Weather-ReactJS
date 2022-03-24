@@ -18,9 +18,9 @@ function Main(props) {
           <h2>Get current and forecast weather, everywhere and every time</h2>
         </div>
 
-        <section style={{ marginTop: "15vh" }}>
+        <section style={{ marginTop: "17vh" }}>
           <div className="temp ">
-            <strong className="amount ">
+            <strong className="amount number">
               {weather.current !== undefined
                 ? Math.round(weather.current.temp)
                 : null}
@@ -45,7 +45,7 @@ function Main(props) {
               className="more-btn"
               onClick={() => togglePage("seven-days-forecast-list")}
             >
-              7 - Days forecasts
+              <span className="number">7</span> - Days forecasts
             </button>
           </div>
         </section>

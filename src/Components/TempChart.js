@@ -37,7 +37,7 @@ function makePoint(temp, tempAverage, key, deg) {
         }}
       >
         <span
-          className="temp"
+          className="temp number"
           style={
             deg.place === "top"
               ? { order: 0, marginBottom: "3px" }

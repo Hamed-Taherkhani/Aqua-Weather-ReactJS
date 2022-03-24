@@ -17,24 +17,28 @@ function MoreWeatherInfos(props) {
         <div className="sunrise-sunset flex-row">
           <section className="sunrise-time time">
             <span>sunrise</span>
-            {sunrise !== null ? (
-              <>
-                {sunrise.getHours().toString().padStart(2, 0)}:
-                {(sunrise.getMinutes() + 1).toString().padStart(2, 0)}
-              </>
-            ) : null}
+            <span className="number">
+              {sunrise !== null ? (
+                <>
+                  {sunrise.getHours().toString().padStart(2, 0)}:
+                  {(sunrise.getMinutes() + 1).toString().padStart(2, 0)}
+                </>
+              ) : null}
+            </span>
           </section>
           <section className="sun-and-orbit">
             <section className="orbit"></section>
           </section>
           <section className="sunset-time time">
             <span>sunset</span>
-            {sunset !== null ? (
-              <>
-                {sunset.getHours().toString().padStart(2, 0)}:
-                {(sunset.getMinutes() + 1).toString().padStart(2, 0)}
-              </>
-            ) : null}
+            <span className="number">
+              {sunset !== null ? (
+                <>
+                  {sunset.getHours().toString().padStart(2, 0)}:
+                  {(sunset.getMinutes() + 1).toString().padStart(2, 0)}
+                </>
+              ) : null}
+            </span>
           </section>
         </div>
 
@@ -43,7 +47,7 @@ function MoreWeatherInfos(props) {
             <tr>
               <td>
                 <section className="head-title">Real feel</section>
-                <section className="amount">
+                <section className="amount number">
                   {weather.current !== undefined
                     ? weather.current.feels_like
                     : null}
@@ -52,9 +56,11 @@ function MoreWeatherInfos(props) {
               <td>
                 <section className="head-title">Humidity</section>
                 <section className="amount">
-                  {weather.current !== undefined
-                    ? weather.current.humidity
-                    : null}
+                  <span className="number">
+                    {weather.current !== undefined
+                      ? weather.current.humidity
+                      : null}
+                  </span>
                   <span>%</span>
                 </section>
               </td>
@@ -64,15 +70,17 @@ function MoreWeatherInfos(props) {
               <td>
                 <section className="head-title">Pursuer</section>
                 <section className="amount">
-                  {weather.current !== undefined
-                    ? weather.current.pressure
-                    : null}
-                  <span>mbar</span>
+                  <span className="number">
+                    {weather.current !== undefined
+                      ? weather.current.pressure
+                      : null}
+                  </span>
+                  <span> mbar</span>
                 </section>
               </td>
               <td>
                 <section className="head-title">UVI</section>
-                <section className="amount">
+                <section className="amount number">
                   {weather.current !== undefined
                     ? Math.round(weather.current.uvi)
                     : null}
@@ -83,15 +91,17 @@ function MoreWeatherInfos(props) {
               <td>
                 <section className="head-title">Wind speed</section>
                 <section className="amount">
-                  {weather.current !== undefined
-                    ? weather.current.wind_speed
-                    : null}
-                  <span>km/h</span>
+                  <span className="number">
+                    {weather.current !== undefined
+                      ? weather.current.wind_speed
+                      : null}
+                  </span>
+                  <span> km/h</span>
                 </section>
               </td>
               <td>
                 <section className="head-title">Clouds</section>
-                <section className="amount">
+                <section className="amount number">
                   {weather.current !== undefined
                     ? weather.current.clouds
                     : null}
