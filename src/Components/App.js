@@ -3,8 +3,11 @@ import "./scss/App.scss";
 import Header from "./Header";
 import Main from "./Main";
 import Preload from "./Preload";
-import { getItem, isKeyRegistered } from "../LocalStorage/LocalStorage";
+import { append, getItem, isKeyRegistered } from "../LocalStorage/LocalStorage";
 import getWeather from "../Ajax/weather";
+import "./../Geolocation/geolocation";
+import { getCurrentGeolocationWithGPS } from "./../Geolocation/geolocation";
+import getGeocoding, { getLocationInfoByLatAndLon } from "../Ajax/geocoding";
 
 function App() {
   // State to saving weather and location infos:
@@ -21,33 +24,47 @@ function App() {
   async function getLocationsFromLocalStorage() {
     let item = getItem("locations");
 
-    // If key is not registered,
+    // If key is not registered:
     if (!isKeyRegistered("locations")) {
-      item = [
-        {
-          country: "IR",
-          lat: 35.6892523,
-          lon: 51.3896004,
-          name: "Tehran",
-        },
-      ];
+      /* Try to get location permission and current place geography coordinate. */
+      getCurrentGeolocationWithGPS((coords) => {
+        item = [{ lat: coords.lat, lon: coords.lon }];
+        getLocationInfoByLatAndLon(item[0].lat, item[0].lon).then((res) => {
+          res = res[0];
+
+          const locationObj = {
+            country: res.country,
+            lat: res.lat,
+            lon: res.lon,
+            name: res.name,
+            state: res.state,
+          };
+          item = [locationObj];
+          getWeatherFunc(item[0]);
+        });
+      });
+    } else {
+      getWeatherFunc(item[0]);
     }
 
-    const { lat, lon } = item[0];
+    function getWeatherFunc(item) {
+      if (item === undefined) return;
 
-    getWeather(lat, lon, ["alerts", "minutely"])
-      .then((res) => {
-        setLocation(item[0]);
-        setWeather(res);
-        setIsFetched(true);
-        determineBackgroundColor(res);
-      })
-      .catch((err) => {
-        setTimeout(() => {
-          getLocationsFromLocalStorage();
-        }, 1000);
-        console.log(err);
-      });
+      const { lat, lon } = item;
+      getWeather(lat, lon, ["alerts", "minutely"])
+        .then((res) => {
+          setLocation(item);
+          setWeather(res);
+          setIsFetched(true);
+          determineBackgroundColor(res);
+        })
+        .catch((err) => {
+          setTimeout(() => {
+            getLocationsFromLocalStorage();
+          }, 1000);
+          console.log(err);
+        });
+    }
   }
 
   const setLocationState = (locationObj) => {

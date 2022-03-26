@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 0.65rem;
+    font-size: map-get($font-size, tiny);
     font-weight: map-get($font-weight, 100);
     color: #ebebebc9;
     letter-spacing: 0.5px;
@@ -27,8 +27,8 @@
     }
 
     .condition-icon {
-      width: 25px;
-      margin: 10px 0;
+      width: 30px;
+      margin: 15px 0;
 
       img {
         width: 100%;
@@ -37,7 +37,7 @@
     }
 
     .temp {
-      font-size: map-get($font-size, normal);
+      font-size: map-get($font-size, large);
       font-weight: map-get($font-weight, medium);
       margin-top: 5px;
       color: #fff;
@@ -49,6 +49,10 @@
         font-size: 0.47rem;
       }
     }
+  }
+
+  .wind .speed span {
+    font-size: map-get($font-size, tiny) !important;
   }
 }
 

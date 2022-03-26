@@ -42,6 +42,19 @@ async function getGeocoding(cityName, limit) {
   }
 }
 
+export async function getLocationInfoByLatAndLon(lat, lon) {
+  const URL = `/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${KEY}`;
+
+  try {
+    const response = await request.get(URL),
+      { data } = response;
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function getURL(cityName, limit, key) {
   return `/direct?q=${cityName}&limit=${limit}&appid=${key}`;
 }

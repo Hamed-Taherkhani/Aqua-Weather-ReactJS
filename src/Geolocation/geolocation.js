@@ -1,23 +1,24 @@
-export function getGeolocationByGPS(callback) {
-  const geolocationInstance = navigator.geolocation,
+export function getCurrentGeolocationWithGPS(callback) {
+  // Create Geolocation instance:
+  const instance = navigator.geolocation,
+    // Set options for request:
     options = {
-      timeout: 3000,
       enableHighAccuracy: false,
+      timeout: 3000,
+      maximumAge: 0,
     };
 
-  geolocationInstance.getCurrentPosition(success, unsuccess, options);
+  instance.getCurrentPosition(success, unsuccess, options);
 
-  function success(geoLocationPositionInstance) {
-    const coords = geoLocationPositionInstance.coords;
+  function success(geolocationPosition) {
+    const { coords } = geolocationPosition,
+      { latitude, longitude } = coords,
+      lat_lon = { lat: latitude, lon: longitude };
 
-    const { latitude, longitude } = coords;
-    callback(latitude, longitude);
+    callback(lat_lon);
   }
 
-  function unsuccess(geoLocationPositionError) {
-    const message = geoLocationPositionError.message;
-
-    alert(message);
-    console.log(message);
+  function unsuccess(geolocationPositionError) {
+    console.log(geolocationPositionError.message);
   }
 }

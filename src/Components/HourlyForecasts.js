@@ -8,8 +8,6 @@ import "./scss/HourlyForecasts.scss";
 function HourlyForecasts(props) {
   const { hourlyForecasts } = props;
 
-  console.log(hourlyForecasts);
-
   return (
     <ul className="hourly-forecasts-list">
       {hourlyForecasts?.map((item, index) => {
